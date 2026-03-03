@@ -10,10 +10,10 @@
     <h1>
         <?php
             // Here echo command is used to print
-            echo "Hello, world!";
+            echo "Hello, world!!";
         ?>  
     </h1>
     <h1> Other Stuff </h1>
-    <script src="/js/index.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
