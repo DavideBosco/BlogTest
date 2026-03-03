@@ -13,17 +13,11 @@
         // any other server request.
         require 'includes/get-items.php';
     ?>
+
+    <h1>Blog</h1>
+    <p>Articoli, guide e approfondimenti per sviluppatori web che vogliono restare aggiornati sul mondo del codice.</p>
     
-    <h1>
-        <?php
-            // Here echo command is used to print
-            echo "Hello, world!!";
-        ?>  
-    </h1>
-    <h1> Other Stuff </h1>
-    <p>
-       
-    </p>
+
     <script src="/js/main.js"></script>
 </body>
 </html>
