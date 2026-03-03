@@ -1,0 +1,29 @@
+{
+  "name": "blog-test",
+  "version": "1.0.0",
+  "description": "A test to see if i can make a website or not.",
+  "main": "index.js",
+  "type": "module",
+
+  "scripts": {
+    "sass-dev": "sass --watch --update --style=expanded src/scss:src/css",
+    "sass-prod": "sass --no-source-map --style=compressed src/scss:src/css",
+    
+    "server-sync": "browser-sync start --server \"dist\" --files \"dist\" --watch \"dist\"",
+    "php-server": "php -S localhost:8000 -t src",
+    "server-sync-proxy": "browser-sync start --proxy 'localhost:8000' --files \"src\" --watch \"src\"",
+    
+    "start-html": "concurrently \"npm run server-sync\" \"npm run sass-dev\"",
+    "start-php": "concurrently \"npm run php-server\" \"npm run server-sync-proxy\" \"npm run sass-dev\"",
+
+    "start": "npm run start-php",
+    "prepare": "concurrently \"npm run sass-prod\""
+  },
+  "author": "Ross Angus",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.2",
+    "sass": "^1.83.4"
+  }
+}
