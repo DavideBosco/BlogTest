@@ -1,4 +1,5 @@
 import setCategory from "./set-category.js";
+import getQueryParam from "./get-query-param.js";
 
 export default function refreshCategorySelector() 
 {
@@ -15,7 +16,10 @@ export default function refreshCategorySelector()
     // Get all unique categories
     const categories = [...new Set(itemResult.data.posts.map(post => post.category))];
 
-     // Get post html template
+    // Get current category from url
+    let currentCategory = getQueryParam("categoria");
+
+    // Get post html template
     const categoryButtontemplate = document.getElementById('category-button');
     // Create new category buttons from template
     let buttons = [];
@@ -24,6 +28,9 @@ export default function refreshCategorySelector()
         const clone = categoryButtontemplate.content.cloneNode(true);
         const button = clone.querySelector('button');
         button.textContent = category;
+        if (category == currentCategory) {
+            button.style.fontWeight = "bold";
+        }
         button.addEventListener('click', function() {
             setCategory(category);
         });
