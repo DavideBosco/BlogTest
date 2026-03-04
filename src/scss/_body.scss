@@ -1,25 +1,77 @@
 @use 'mixins';
+@use 'button';
 
-#posts-container{
-    padding: 1rem;
-    border: 8px solid rgb(37, 16, 16);
+
+body {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    & h1 {
+    font-size: 4em;
+    margin-block-end: 0.1em;
+    }
+
+    & p {
+        font-size: 1.2em;
+        margin-block-end: 3em;
+    }
+}
+
+
+
+#posts-container {
     justify-content: center;
    
     /* Grid systems */
     $min-cols: 1;
     $max-cols: 3;
-    $cols-min-width: 20rem;
+    $cols-min-width: 16rem;
     $row-gap: 1rem;
     $col-gap: 1rem;
     @include mixins.dynamic-grid-adjustment($min-cols, $max-cols, $cols-min-width, $row-gap, $col-gap);
 }
 
-.post{
-    height: auto;
-    
-    color: black;
-    background-color: rgb(9, 47, 47);
-    font-size: 30px;
-    font-weight: bold;
+.post {
+    height: fit-content;
+    display: grid;
+    align-items: start;
+
+    & > img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    & > div {
+        & .post-date {
+            font-size: 0.8em;
+        }
+
+        & .post-description {
+            font-size: 1em;
+        }
+
+        & > h1 {
+            font-size: 1.3em;
+        }
+    }
 }
+
+#category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1em;
+    gap: 0.5em;
+}
+
+#page-selector {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 1em;
+}
+
+
+
+
 
