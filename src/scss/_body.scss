@@ -1,6 +1,25 @@
+@use 'mixins';
 
-.hello{
-  color: black;
-  font-size: 30px;
-  font-weight: bold;
+#posts-container{
+    padding: 1rem;
+    border: 8px solid rgb(37, 16, 16);
+    justify-content: center;
+   
+    /* Grid systems */
+    $min-cols: 1;
+    $max-cols: 3;
+    $cols-min-width: 20rem;
+    $row-gap: 1rem;
+    $col-gap: 1rem;
+    @include mixins.dynamic-grid-adjustment($min-cols, $max-cols, $cols-min-width, $row-gap, $col-gap);
 }
+
+.post{
+    height: auto;
+    
+    color: black;
+    background-color: rgb(9, 47, 47);
+    font-size: 30px;
+    font-weight: bold;
+}
+

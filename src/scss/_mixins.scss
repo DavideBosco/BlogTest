@@ -1,1 +1,22 @@
 
+/* Makes element display its content in a grid with restricted number of columns */
+@mixin dynamic-grid-adjustment($min-cols, $max-cols, $cols-min-width, $row-gap: 0px, $col-gap: 0px) {
+  --min-cols: #{$min-cols};
+  --max-cols: #{$max-cols};
+  --cols-min-width: #{$cols-min-width};
+  --row-gap: #{$row-gap};
+  --col-gap: #{$col-gap};
+  
+  display: grid;
+
+  // (100% - col-gap*(min-cols -1))/min-cols = the space left after removing the gaps, divided by the min number of colums
+  $size-with-min-columns: calc( (100% - var(--col-gap)*(var(--min-cols) - 1))/var(--min-cols) );
+  // (100% - col-gap*(max-cols -1))/max-cols = the space left after removing the gaps, divided by the max number of colums
+  $size-with-max-columns: calc( (100% - var(--col-gap)*(var(--max-cols) - 1))/var(--max-cols) );
+  // The minimum size a column can be
+  $min-column-size: calc( min($size-with-min-columns, max(var(--cols-min-width), $size-with-max-columns)) );
+  
+  grid-template-columns: repeat(auto-fit, minmax(#{$min-column-size}, 1fr));
+  gap: var(--row-gap) var(--col-gap);
+}
+

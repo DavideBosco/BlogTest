@@ -17,6 +17,17 @@
     <h1>Blog</h1>
     <p>Articoli, guide e approfondimenti per sviluppatori web che vogliono restare aggiornati sul mondo del codice.</p>
     
+    <div id="posts-container">
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+        <div class="post">aaaaa</div>
+    </div>
 
     <script src="/js/main.js"></script>
 </body>
