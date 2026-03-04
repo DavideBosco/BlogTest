@@ -1,17 +1,25 @@
-    
+import setPage from "./set-page.js";
+
+
 export default function refreshPageSelector(page) 
 {
-    const target1 = document.getElementById('page-selector');
-    const template1 = document.getElementById('page-button');
+    const pageSelector = document.getElementById('page-selector');
+    const pageButtonTemplate = document.getElementById('page-button');
+
+    let buttons = [];
     for (let i = 1; i <= 5; ++i) {
-        const clone = template1.content.cloneNode(true);
-        const paragraph = clone.querySelector('p')
-        paragraph.textContent = `${i}`;
-
+        const clone = pageButtonTemplate.content.cloneNode(true);
+        const button = clone.querySelector('button');
+        button.textContent = `${i}`;
         if (i === page) {
-            paragraph.style.fontWeight = "bold";
+            button.style.fontWeight = "bold";
         }
+        button.addEventListener('click', function() {
+            setPage(i);
+        });
 
-        target1.append(clone);
+        buttons.push(clone);
     }
+
+    pageSelector.replaceChildren(...buttons);
 }

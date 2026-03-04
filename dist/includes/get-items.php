@@ -4,7 +4,9 @@
     {
        $output = [
             "data" => "",
-            "error" => "none"
+            "error" => "",
+            "errorNum" => 0,
+            "httpCode" => 0,
        ];
 
        // Initialize session
@@ -24,6 +26,7 @@
 
         // Check for Connection Errors (DNS, Timeout, Refused)
         $errorNum = curl_errno($ch);
+        $output["errorNum"] = $errorNum;
         if ($errorNum) 
         {
             $errorMsg = curl_error($ch);
@@ -34,6 +37,7 @@
         // If curl geve no errors it means that the server was reached.
         // we still want to make sure that the page exists and the server is fine.
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $output["httpCode"] = $httpCode;
         if ($httpCode >= 400) { 
             $output["error"] = "HTTP Error: $httpCode";
             return $output;
@@ -52,6 +56,8 @@
  <script>
     // Run getItems and turn associative array to js object by converting it to json.
     const itemResult = <?php echo json_encode(getItems('https://farmerbit.com/json-test/')); ?>;
+    console.log(`Item Result ErrorNum: ${itemResult.errorNum}`);
+    console.log(`Item Result HttpCode: ${itemResult.httpCode}`);
     console.log(`Item Result Error: ${itemResult.error}`);
     console.log('Item Result Data:');
     console.log(itemResult.data);
