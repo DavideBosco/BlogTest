@@ -35,14 +35,10 @@
 
     <h1>Blog</h1>
     <p>Articoli, guide e approfondimenti per sviluppatori web che vogliono restare aggiornati sul mondo del codice.</p>
-    
     <div id="category-filters"></div>
-
     <div id="posts-container"></div>
-
     <div id="page-selector"></div>
     
-
     <script src="/js/main.js"></script>
 </body>
 </html>
