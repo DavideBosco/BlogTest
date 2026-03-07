@@ -17,7 +17,5 @@ export default function writeCompressedImage(filePath)
     }
 
     // compress image in dist directory with same sub path
-    sharp(filePath).webp().toFile(`${distDirPath}/${fileName}.avif`);
     sharp(filePath).webp().toFile(`${distDirPath}/${fileName}.webp`);
-    sharp(filePath).webp().toFile(`${distDirPath}/${fileName}.jpg`);
 }

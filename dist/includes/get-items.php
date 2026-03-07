@@ -44,7 +44,7 @@
         }
 
         // Decode the data as JSON
-        $data = json_decode($response, true);
+        $data = json_decode($response);
         $output["data"] = $data;
         if (!$data) {
             $output["error"] = "JSON parsing error";
@@ -52,13 +52,3 @@
         return $output;
     }
 ?>
-
- <script>
-    // Run getItems and turn associative array to js object by converting it to json.
-    const itemResult = <?php echo json_encode(getItems('https://farmerbit.com/json-test/')); ?>;
-    console.log(`Item Result ErrorNum: ${itemResult.errorNum}`);
-    console.log(`Item Result HttpCode: ${itemResult.httpCode}`);
-    console.log(`Item Result Error: ${itemResult.error}`);
-    console.log('Item Result Data:');
-    console.log(itemResult.data);
-</script>

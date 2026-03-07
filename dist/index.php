@@ -8,10 +8,9 @@
 </head>
 <body>
     <?php
-        // By including get-items.php we are initializing the JS variable itemResult, which we can then use anywhere.
-        // Since we cache the whole json data from the source url, the client can just do whatever from here, without
-        // any other server request.
         require 'includes/get-items.php';
+        $cachedData = getItems('https://farmerbit.com/json-test/');
+        require 'includes/blog-page.php';
     ?>
 
     <template id="post-template">
