@@ -9,16 +9,24 @@ export default function initializeCategorySelector()
         function(event) {
             // Check if what was clicked was a category button
             // (using closest, to account for event.target being something inside the button)
-            if (event.target.closest('.category-button')) 
+            const categoryButton = event.target.closest('.category-button');
+            if (categoryButton) 
             {
-                // Get button category from custom attribute
-                const category = event.target.dataset.category;
+                let category = "";
+                const wasActive = categoryButton.classList.contains('active');
+
+                if (!wasActive) {
+                    // Get button category from custom attribute
+                    category = categoryButton.dataset.category;
+                }
 
                 loadPostsForPage(1, category);
 
                 // Update category-selector's active button
                 categorySelector.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
+                if (!wasActive) {
+                    categoryButton.classList.add('active');
+                }
             }
         }
     );

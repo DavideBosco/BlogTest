@@ -11,7 +11,7 @@ export default function refreshPageSelector(page)
         const clone = pageButtonTemplate.content.cloneNode(true);
         const button = clone.querySelector('button');
         button.textContent = `${i}`;
-        if (i === page) {
+        if (i == page) {
             button.style.fontWeight = "bold";
         }
         button.addEventListener('click', function() {

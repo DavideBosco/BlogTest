@@ -49,6 +49,8 @@
             $pagesAvailable = ceil(count($posts) / $pageSize);
             // Clamp page to be the last with a post in it.
             $page = max(1, min($page, $pagesAvailable));
+
+            // TODO: here we are clamping the page, but on initial page load, the url still uses the wrong page. it is not a problem using fetch cause we do it using js.
             
             // Get the index of the first post of the page.
             $pageStartIndex = $pageSize * ($page - 1);
