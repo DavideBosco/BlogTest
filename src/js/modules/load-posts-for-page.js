@@ -14,7 +14,7 @@ export default async function loadPostsForPage(page, category)
         setQueryParam("categoria", category);
 
         // TODO: use totalPages to update page selector
-        refreshPageSelector(data.page) 
+        refreshPageSelector(data.page);
     } 
     catch (error) 
     {
