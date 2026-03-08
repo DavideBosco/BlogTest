@@ -1,5 +1,5 @@
-import setPage from "./set-page.js";
-
+import loadPostsForPage from "./load-posts-for-page.js";
+import getQueryParam from "./get-query-param.js";
 
 export default function refreshPageSelector(page) 
 {
@@ -15,7 +15,8 @@ export default function refreshPageSelector(page)
             button.style.fontWeight = "bold";
         }
         button.addEventListener('click', function() {
-            setPage(i);
+            let category = getQueryParam("categoria");
+            loadPostsForPage(i, category);
         });
 
         buttons.push(clone);

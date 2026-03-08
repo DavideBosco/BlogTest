@@ -1,6 +1,6 @@
 <?php
     /** From the url get the json file containing all the items to display. */
-    function getItems($url) 
+    function getPostsFromEndpoint($url) 
     {
        $output = [
             "data" => "",
