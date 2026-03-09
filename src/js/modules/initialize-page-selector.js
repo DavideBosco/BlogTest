@@ -13,14 +13,12 @@ export default function initializePageSelector()
     prevPage.addEventListener('click', (e) => {
         const currentPage = getPageParam();
         const currentCategory = getQueryParam(categoryUrlParam);
-         console.log(currentPage - 1);
         loadPostsForPage(currentPage - 1, currentCategory);
     });
     
     nextPage.addEventListener('click', (e) => {
         const currentPage = getPageParam();
         const currentCategory = getQueryParam(categoryUrlParam);
-        console.log(currentPage + 1);
         loadPostsForPage(currentPage + 1, currentCategory);
     });
 }

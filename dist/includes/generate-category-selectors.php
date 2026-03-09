@@ -1,12 +1,12 @@
 <?php
-    function generateCategorySelector($postsData) 
+    function generateCategorySelectors($postsData) 
     {
         if ($postsData["error"] != "") {
             return;
         }
 
         ?>
-            <div id="category-selector">
+            
         <?php
 
         // Get all unique categories.
@@ -28,7 +28,7 @@
         }
 
         ?>
-            </div>
+           
         <?php
     }
 ?>

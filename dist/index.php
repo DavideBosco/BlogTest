@@ -8,9 +8,11 @@
 </head>
 <body>
     <?php
+        // Get the data for all the posts
         require 'config/config.php';
         require 'includes/get-posts-from-endpoint.php';
         $postsData = getPostsFromEndpoint($url);
+        // Generate html for the posts of the requested page
         require 'includes/generate-page-data.php';
         $pageData = generatePageData($postsData, $pageSize);
     ?>
@@ -23,13 +25,17 @@
     <p>Articoli, guide e approfondimenti per sviluppatori web che vogliono restare aggiornati sul mondo del codice.</p>
     
     
-    <?php
-        require 'includes/generate-category-selector.php';
-        generateCategorySelector($postsData);
-    ?>
+    <div id="category-selector">
+        <?php
+            // Create category selector buttons by getting all unique categories 
+            require 'includes/generate-category-selectors.php';
+            generateCategorySelectors($postsData);
+        ?>
+    </div>
 
     <div id="posts-container"> 
         <?php
+            // Use generated html
             echo $pageData["html"];
         ?>
     </div>

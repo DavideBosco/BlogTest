@@ -31,10 +31,13 @@ export default function refreshPageSelector(page, totalPages)
     for (let i = startPage; i <= endPage; ++i) {
         const clone = pageButtonTemplate.content.cloneNode(true);
         const button = clone.querySelector('button');
+
         button.textContent = `${i}`;
         if (i == page) {
             button.classList.add('active');
         }
+        
+        // On click event -> load the corresponding page for current category
         button.addEventListener('click', function() {
             let category = getQueryParam(categoryUrlParam);
             loadPostsForPage(i, category);
