@@ -4,7 +4,7 @@ import { categoryUrlParam } from "./../consts.js";
 
 export default function refreshPageSelector(page, totalPages) 
 {
-    const pageSelector = document.getElementById('page-numbers');
+    const pageSelector = document.getElementById('page-selector');
     const pageButtonTemplate = document.getElementById('page-button');
 
     // Try to center the selected page in the page selector
@@ -26,13 +26,14 @@ export default function refreshPageSelector(page, totalPages)
         endPage = totalPages;
     }
 
+    // Generate page buttons
     let buttons = [];
     for (let i = startPage; i <= endPage; ++i) {
         const clone = pageButtonTemplate.content.cloneNode(true);
         const button = clone.querySelector('button');
         button.textContent = `${i}`;
         if (i == page) {
-            button.style.fontWeight = "bold";
+            button.classList.add('active');
         }
         button.addEventListener('click', function() {
             let category = getQueryParam(categoryUrlParam);
@@ -42,5 +43,14 @@ export default function refreshPageSelector(page, totalPages)
         buttons.push(clone);
     }
 
-    pageSelector.replaceChildren(...buttons);
+    // Enable / disable previous page button
+    const prevPage = document.getElementById('page-selector-prev');
+    prevPage.disabled = (page == 1);
+
+    // Enable / disable next page button
+    const nextPage = document.getElementById('page-selector-next');
+    nextPage.disabled = (page == totalPages);
+
+    // Set buttons
+    pageSelector.replaceChildren(...[prevPage, ...buttons, nextPage]);
 }

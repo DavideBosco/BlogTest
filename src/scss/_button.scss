@@ -38,10 +38,15 @@ button {
         color: #174ea6;
     }
 
-    &:active, &.active {
+    &:active {
         box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
         outline: none;
+        
+    }
+
+    &.active {
         font-weight: bold;
+        border: 2px solid black;
     }
 
     &:focus {
@@ -67,5 +72,20 @@ button {
 
     &:disabled {
         box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+        background: #cecece;
+        color: #9b9a9a;
+    }
+
+    &.page-button {
+        width: clamp(35px, 15vw, 60px); 
+        min-width: 0;
+        padding: 0.1rem;
+        height: auto;
+        
+        // Forza il browser a mantenere le proporzioni durante il resize
+        flex: 0 1 auto; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

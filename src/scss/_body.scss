@@ -55,20 +55,44 @@ body {
     }
 }
 
-#category-filters {
+#category-selector {
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 1em;
+    margin-bottom: 1em;
     gap: 0.5em;
 }
 
-.page-selector {
-    width: 100%;
+#page-selector {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    width: 60%;
+
     justify-content: center;
     display: flex;
-    gap: 1em;
+    flex-wrap: nowrap;
+    gap: 1rem;
 }
 
+// Tablet
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+    // body { background-color: lightgreen; }
+
+    #page-selector {
+        width: 85%;
+        gap: 0.6rem;
+    }
+}
+
+// Phone
+@media only screen and (max-width: 480px) {
+    // body { background-color: lightblue; }
+
+    #page-selector {
+        width: 100%;
+        gap: 0.3rem;
+    }
+}
 
 
 

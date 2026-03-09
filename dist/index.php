@@ -16,7 +16,7 @@
     ?>
 
     <template id="page-button">
-        <button>1</button>
+        <button class="page-button">1</button>
     </template>
 
     <h1>Blog</h1>
@@ -34,10 +34,9 @@
         ?>
     </div>
 
-    <div class="page-selector", id="page-selector">
-        <button id="page-selector-prev"><</button>
-        <div id="page-numbers"></div>
-        <button id="page-selector-next">></button>
+    <div id="page-selector">
+        <button class="page-button", id="page-selector-prev"><</button>
+        <button class="page-button", id="page-selector-next">></button>
     </div>
     
     <script>
