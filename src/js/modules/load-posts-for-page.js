@@ -1,20 +1,27 @@
 import setQueryParam from "./set-query-param.js";
 import refreshPageSelector from "./refresh-page-selector.js";
+import { pageUrlParam, categoryUrlParam } from "./../consts.js";
 
 export default async function loadPostsForPage(page, category) 
 {
     try {
+        // We are getting an object containing the properties: html, page, totalPages
+        // html: all the posts to display in posts-container
+        // page: the clamped page index (in order for page to have actual data)
+        // totalPages: the pages available for this category
         const response = await fetch(`api/get-page-data.php?categoria=${category}&pagina=${page}`);
         const data = await response.json();
 
+        // Update posts
         const postsContainer = document.getElementById('posts-container');
         postsContainer.innerHTML = data.html;
 
-        setQueryParam("pagina", data.page);
-        setQueryParam("categoria", category);
+        // Update url
+        setQueryParam(pageUrlParam, data.page);
+        setQueryParam(categoryUrlParam, category);
 
-        // TODO: use totalPages to update page selector
-        refreshPageSelector(data.page);
+        // Update page selector
+        refreshPageSelector(data.page, data.totalPages);
     } 
     catch (error) 
     {

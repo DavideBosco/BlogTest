@@ -34,8 +34,16 @@
         ?>
     </div>
 
-    <div id="page-selector"></div>
+    <div class="page-selector", id="page-selector">
+        <button id="page-selector-prev"><</button>
+        <div id="page-numbers"></div>
+        <button id="page-selector-next">></button>
+    </div>
     
+    <script>
+        let currentPageAtLoad = <?= $pageData["page"] ?>;
+        let totalPagesAtLoad = <?= $pageData["totalPages"] ?>;
+    </script>
     <script src="/js/main.js"></script>
 </body>
 </html>

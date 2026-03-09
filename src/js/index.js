@@ -1,12 +1,17 @@
-import loadPostsForPage from "./modules/load-posts-for-page.js";
 import initializeCategorySelector from "./modules/initialize-category-selector.js";
+import initializePageSelector from "./modules/initialize-page-selector.js";
 import refreshPageSelector from "./modules/refresh-page-selector.js";
-import getQueryParam from "./modules/get-query-param.js";
+import setQueryParam from "./modules/set-query-param.js";
+import { pageUrlParam } from "./consts.js";
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeCategorySelector();
+    initializePageSelector();
 
-    // TODO: no clue what to do, since it needs the tot number of pages, and to get that we need to ask php
-    let page = getQueryParam("pagina");
-    refreshPageSelector(page);
+    // php might have clamped the page value to return a valid page
+    setQueryParam(pageUrlParam, currentPageAtLoad);
+    // update the page selector using the page returned from php and the toal amount of pages available
+    refreshPageSelector(currentPageAtLoad, totalPagesAtLoad);
 });
